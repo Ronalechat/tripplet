@@ -4,9 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Ronalechat</title>
+  <title>TTT</title>
+  <script src="js/jquery.js"></script>
+  <script src="js/main.js"></script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <img src="https://fillmurray.com/1920/1080" alt="giant Bill Murray">
+  <div id="container">
+    <header>
+      <h1>TTT</h1>
+      <h2 id="winbanner">Winner is </h2>
+    </header>
+    <ul id="board">
+      <li class="tile" id="pos1" data-xpos="0" data-ypos="0">+</li>
+      <li class="tile" id="pos2" data-xpos="0" data-ypos="1">+</li>
+      <li class="tile" id="pos3" data-xpos="0" data-ypos="2">+</li>
+      <li class="tile" id="pos4" data-xpos="1" data-ypos="0">+</li>
+      <li class="tile" id="pos5" data-xpos="1" data-ypos="1">+</li>
+      <li class="tile" id="pos6" data-xpos="1" data-ypos="2">+</li>
+      <li class="tile" id="pos7" data-xpos="2" data-ypos="0">+</li>
+      <li class="tile" id="pos8" data-xpos="2" data-ypos="1">+</li>
+      <li class="tile" id="pos1" data-xpos="2" data-ypos="2">+</li>
+    </ul>
+    <div class="clearfix"></div>
+    <footer>
+      <button id="playagain">Play Again?</button>
+    </footer>
+  </div>
 </body>
 </html>
