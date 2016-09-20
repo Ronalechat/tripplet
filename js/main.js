@@ -1,4 +1,5 @@
-var gameBoard = [
+$(document).ready(function() {
+  var gameBoard = [
   ['','',''],
   ['','',''],
   ['','','']
@@ -9,6 +10,8 @@ var o = "o";
 var player = o;
 var turns = 0;
 
+var win = false;
+
 // Horizontal and Vertical win conditions //////////////////////////////////
 var straightWin = function(player) {
   // Check if xPos match
@@ -16,14 +19,15 @@ var straightWin = function(player) {
     if (gameBoard[i][0] === player && gameBoard[i][0] === gameBoard[i][1] && gameBoard[i][1] === gameBoard[i][2]){
       $('#winbanner').fadeIn().text('Winner is ' + player);
       $('#playagain').css('display', 'inline');
-      return true; // FIXME: Add proper win condition
+      return win = true; // FIXME: Add proper win condition
     } else if (gameBoard[0][i] === player && gameBoard[0][i] === gameBoard[1][i] && gameBoard[1][i] === gameBoard[2][i]){
       $('#winbanner').fadeIn().text('Winner is ' + player);
       $('#playagain').css('display', 'inline');
-      return true; // FIXME: same as above
+      return win = true; // FIXME: same as above
     }
   }
 };
+
 // Diagonal Win conditions //////////////////////////////////////////////
 var diagonalWin = function(player) {
   if (
@@ -31,18 +35,20 @@ var diagonalWin = function(player) {
     ) {
     $('#winbanner').fadeIn().text('Winner is ' + player);
     $('#playagain').css('display', 'inline');
-    return true; // FIXME: same as above
+    return win = true; // FIXME: same as above
     }
   };
+
 // Combined win function ////////////////////////////
 var isWinner = function(player) {
   straightWin(player);
   diagonalWin(player);
 };
+
 // Parse options for player move //////////////////////////////////
 var playMove = function (posX, posY) {
   isWinner(player);
-  if (turns === 8 ){
+  if ( win === false && turns === 8 ){
     $('#winbanner').fadeIn().text('Tie');
     $('#playagain').css('display', 'inline');
   };
@@ -53,7 +59,6 @@ var playMove = function (posX, posY) {
   }
 }; // End of PlayMove //////////////////
 
-$(document).ready(function() {
   $('#board li').on('click', function(){
     var posX = $(this).data('xpos');
     var posY = $(this).data('ypos');
@@ -66,10 +71,11 @@ $(document).ready(function() {
       turns++;
     }
   }); // End of Click function  /////////////////////////////
-  
+
   $('#playagain').on('click', function(){
     $('#board li').text('+');
     turns = 0;
+    win = false;
     gameBoard = [
       ['','',''],
       ['','',''],
