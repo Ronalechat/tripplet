@@ -48,15 +48,11 @@ h1 {
   width: 70%;
   padding: 15px;
   border-radius: 5px;
+  cursor: pointer;
 }
-
-.o {
-  color: green !important;
-
-}
-
-.x {
-  color: red !important;
+#playagain:hover {
+  transform: scale(1.1);
+  background: #777;
 }
 
 footer {
